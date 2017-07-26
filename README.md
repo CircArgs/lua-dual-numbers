@@ -4,7 +4,6 @@ An Arbitrary Graph Package for Genetic Algorithms with GPU acceleration and netw
 
 ### What is this repository for? ###
 
-* Quick summary
 * Version: 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
