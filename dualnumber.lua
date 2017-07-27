@@ -28,6 +28,9 @@ function copy(orig)--utility function for hard copying a table with nonindexed v
 end
 
 function dualnumber.new(realpart, dualpartlist)--takes a real number and a list of dual parts {x=1,y=5,z=3.14,...}
+  if getmetatable(realpart)==dualnumber then
+    return realpart
+  end
   local realpart =realpart or 0
   local dualpartlist=dualpartlist or {}
   local num={realpart=realpart, dualpart=dualpartlist}
