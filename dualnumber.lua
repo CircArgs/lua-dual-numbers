@@ -244,6 +244,7 @@ dualnumber.newfunc("Id", function(x) return x end, function(x) return 1 end)
 dualnumber.newfunc("softplus", function(x) return math.log(1+math.exp(x)) end, dualnumber.functions.logistic)
 dualnumber.newfunc("simplified_logistic",function(x) return math.min(math.max(0,x+2),4)/4 end, function(x) if x<=-2 or x>=2 then return 0 else return .25 end end)
 dualnumber.newfunc("Step", function(x) if x<0 then return 0 else return 1 end end, function(x) return 0 end)
+dualnumber.newfunc("Square", function(x) return x*x end, function(x) return 2*x end)
 
 
 return dualnumber
