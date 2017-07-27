@@ -1,6 +1,6 @@
 # README #
 
-An Arbitrary Graph Package for Genetic Algorithms with GPU acceleration and network distribution capanilities
+An Arbitrary Graph Package for Genetic Algorithms with GPU acceleration and network distribution capabilities
 
 ### What is this repository for? ###
 
