@@ -245,4 +245,5 @@ dualnumber.newfunc("softplus", function(x) return math.log(1+math.exp(x)) end, d
 dualnumber.newfunc("simplified_logistic",function(x) return math.min(math.max(0,x+2),4)/4 end, function(x) if x<=-2 or x>=2 then return 0 else return .25 end end)
 dualnumber.newfunc("Step", function(x) if x<0 then return 0 else return 1 end end, function(x) return 0 end)
 
+
 return dualnumber
