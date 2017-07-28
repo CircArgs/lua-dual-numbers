@@ -6,9 +6,9 @@ function dualnumber.functions.__call(self, obj)
   if obj==nil then
     return self.name
   end
-  if dualnumber.type(obj)=="dualnumber" then
+  if type(obj)=="dualnumber" then
     return dualnumber.new(self.func(obj.realpart),dualnumber.dualpart(obj*self.deriv(obj.realpart)))
-  elseif dualnumber.type(obj)=="number" then
+  elseif type(obj)=="number" then
     return self.func(obj)
   else
     error(self.name.." undefined for type "..dualnumber.type(obj))
