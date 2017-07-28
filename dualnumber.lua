@@ -1,3 +1,5 @@
+local type=require("shape")
+
 local dualnumber={functions={}, __index={type="dualnumber"}}
 
 function dualnumber.functions.__call(self, obj)
@@ -39,11 +41,7 @@ function dualnumber.new(realpart, dualpartlist)--takes a real number and a list 
 end
 
 function dualnumber.type(obj)
-  if getmetatable(obj)==dualnumber then
-    return "dualnumber"
-  else
-    return type(obj)
-  end
+  return type(obj)
 end
 
 function dualnumber.__tostring(obj)
