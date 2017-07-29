@@ -35,7 +35,8 @@ print("Feel Free to Check it by hand (or w/ derivative calculater online). No Ma
 
 print("now time for some matrices :)")
 X=M.new{{{1,2,3},{3453,323,45}}}
-print(inspect(X))
+print("here we have a pretty printed matrix: \n")
+print(X)
 print(type(X))
 print(X(1,2))
 print(inspect(X:shape()))
@@ -44,7 +45,30 @@ print("Here's an example of an index out of bounds error")
 print(err)
 print(X.T)--is X transposed?
 X:transpose()
-print(X.T)--is X transposed now?
-print(X(2,1))
+print(inspect(X:shape()))
+print(X.T)--is X transposed now? NOTE: We can make a hard transpose (new matrix that must be assigned a new pointer) by using force_transpose instead
+print(X(3,2))--now that it's transposed we can ask for the third row second element
 
+print("here we have a our transposed pretty printed matrix: \n")
+print(X)--how about we look at it again?
+print(X(2,1)) --and a sanity check?
 
+--now all the same for a random matrix
+Y=M.new{4,4,"random"}
+print(Y)
+print(type(Y))
+print(Y(1,2))
+print(inspect(Y:shape()))
+--[[
+--now all the same for a matrix of all zeros (feel free to crank the numbers up! LuaJIT can handle it)
+Y=M.new{nrows=12,ncolumns=15} --we can also call with named parameters
+print(Y)
+print(type(Y))
+print(Y(1,2))
+print(inspect(Y:shape()))
+
+Y=M.new{nrows=100,ncolumns=15, fill=function() return math.random(0,1) end} --we can also call with named parameters
+print(Y)
+print(type(Y))
+print(Y(1,2))
+print(inspect(Y:shape()))]]
