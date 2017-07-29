@@ -220,6 +220,14 @@ function dualnumber.grad(obj)
   return dualnumber.dualpart(obj)
 end
 
+function dualnumber.__index.grad(self)
+  return dualnumber.dualpart(self)
+end
+
+function dualnumber:grad()
+  return self.grad(self)
+end
+
 function dualnumber.val(obj)
   return dualnumber.realpart(obj)
 end

@@ -34,6 +34,7 @@ print(inspect(dn.grad(f(x,y,z))))--prints the gradient of f evaluated at (x,y,z)
 print("Feel Free to Check it by hand (or w/ derivative calculater online). No Magic Here!")
 
 print("now time for some matrices :)")
+
 X=M.new{{{1,2,3},{3453,323,45}}}
 print("here we have a pretty printed matrix: \n")
 print(X)
@@ -43,12 +44,14 @@ print(inspect(X:shape()))
 _,err=pcall(function (r,c) return X(r,c) end, 143,2)--there are not 143 rows
 print("Here's an example of an index out of bounds error")
 print(err)
+print("transposed before transposing? \n")
 print(X.T)--is X transposed?
-X:transpose()
 print(inspect(X:shape()))
+X:transpose()--transpose is instantaneous
+print(inspect(X:shape()))--shape after transpose
+print("transposed after transposing? \n")
 print(X.T)--is X transposed now? NOTE: We can make a hard transpose (new matrix that must be assigned a new pointer) by using force_transpose instead
 print(X(3,2))--now that it's transposed we can ask for the third row second element
-
 print("here we have a our transposed pretty printed matrix: \n")
 print(X)--how about we look at it again?
 print(X(2,1)) --and a sanity check?
@@ -59,16 +62,30 @@ print(Y)
 print(type(Y))
 print(Y(1,2))
 print(inspect(Y:shape()))
---[[
---now all the same for a matrix of all zeros (feel free to crank the numbers up! LuaJIT can handle it)
+
+print "now all the same for a matrix of all zeros (feel free to crank the numbers up! LuaJIT can handle it)\n"
+
 Y=M.new{nrows=12,ncolumns=15} --we can also call with named parameters
+print(type(Y))
+print(inspect(Y:shape()))
+print(Y)
+
+
+Y=M.new{nrows=100,ncolumns=15, fill=function() return math.random(0,1,4) end} --we can also call with named parameters
 print(Y)
 print(type(Y))
 print(Y(1,2))
 print(inspect(Y:shape()))
 
-Y=M.new{nrows=100,ncolumns=15, fill=function() return math.random(0,1) end} --we can also call with named parameters
+print("\n we can have our matrices type checked to ensure the inputs are all the elements are all the same (off by default)\n")
+print("\n we can have our matrices dimension checked to ensure the rows all have the same length (on by default)\n")
+print("\n let's make a matrix of dual numbers and check if all the elements are dual numbers\n")
+
+
+Y=M.new{nrows=10,ncolumns=10, fill=function(r,c) return dn.new(math.random(),{[tostring(r)..tostring(c)]=1}) end, check_values=true} --we can also call with named parameters
 print(Y)
 print(type(Y))
-print(Y(1,2))
-print(inspect(Y:shape()))]]
+print(Y(5,9))
+print(inspect(Y:shape()))
+
+print(dn.new(1,{["54"]=1}):grad())
