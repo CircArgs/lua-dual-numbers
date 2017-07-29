@@ -13,5 +13,11 @@ Variables:
 
 3)Booleans should be preceded by a word that implies its type exs: is_, will_,...
 
+Garbage Collection:
+Try to avoid creating local values in scope of a loop. Rather than reallocating memory for new values and potentially bogging down the garbage collector, 
+just set the variable to nil outside the loop's scope and reassign it within scope.
+
+In this way, setting the garbage collector to be more agressive doesnt make it keep having to free up space we are just going to reallocate
+
 
 
