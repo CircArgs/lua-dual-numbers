@@ -1,13 +1,15 @@
 local inspect=require("inspect")--not mine nor a part of the project!!!!! simply a resource to display tables to console for the sake of these examples!!!
 
 
+--Note: you do not have to run all the examples at once. Simply commment out what you dont want like so:
+
 
 local type=require("shape") --overwrite the built-in type function (local scope declaration to this script is very important)
 local dn=require("dualnumber")
---local M=require("matrix")
+local M=require("matrix")
 local funcs=dn.functions
 --add a new function to use
-dn.newfunc("sin", math.sin, math.cos)
+dn.new_func("sin", math.sin, math.cos)
 
 --x is a number we can use like any other (with functions of the dualnumber class), dx is a tag to track the first order derivative of a function with respect to x
 local x=dn.new(math.pi, {dx=1})
@@ -31,5 +33,18 @@ print(inspect(dn.grad(f(x,y,z))))--prints the gradient of f evaluated at (x,y,z)
 
 print("Feel Free to Check it by hand (or w/ derivative calculater online). No Magic Here!")
 
+print("now time for some matrices :)")
+X=M.new{{{1,2,3},{3453,323,45}}}
+print(inspect(X))
+print(type(X))
+print(X(1,2))
+print(inspect(X:shape()))
+_,err=pcall(function (r,c) return X(r,c) end, 143,2)--there are not 143 rows
+print("Here's an example of an index out of bounds error")
+print(err)
+print(X.T)--is X transposed?
+X:transpose()
+print(X.T)--is X transposed now?
+print(X(2,1))
 
 

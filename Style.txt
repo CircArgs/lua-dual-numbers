@@ -1,0 +1,17 @@
+Functions:
+1)Class Methods should be lowercase and use underscores to separate words (as will nonconstant variables)			
+ex. example_function 
+
+The reason for this is that these functions are (visibly) implemented as table values.
+
+2)Otherwise, functions will be camelcased ex. ExampleFunction
+
+Variables:
+1) All nonconstant variables are lower case and if names are compound, component words are separated by underscores ex: example_variable
+
+2)All constant values are all CAPS with underscores ex. EXAMPLE_CONSTANT
+
+3)Booleans should be preceded by a word that implies its type exs: is_, will_,...
+
+
+

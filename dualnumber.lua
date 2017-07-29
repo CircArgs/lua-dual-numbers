@@ -213,7 +213,7 @@ function dualnumber.__div(lhs,rhs)--lhs is the dividend while rhs is the divisor
   end
 end
 
-function dualnumber.newfunction(fun)--a new function ('fun') must be of the form {function defined on real numbers (can include dual number functions i.e. functions in dualnumber.functions), first derivative of the function (in terms of functions already in dualnumber.function or primitive binary operators +,-,*,/)}
+function dualnumber.new_function(fun)
 end
 
 function dualnumber.grad(obj)
@@ -224,7 +224,7 @@ function dualnumber.val(obj)
   return dualnumber.realpart(obj)
 end
 
-function dualnumber.newfunc(name,func,deriv)
+function dualnumber.new_func(name,func,deriv)--a new function ('fun') must be of the form {function defined on real numbers (can include dual number functions i.e. functions in dualnumber.functions), first derivative of the function (in terms of functions already in dualnumber.function or primitive binary operators +,-,*,/)}
   if func==nil or name==nil then
     error("Must provide a function name and at least the function (should derivative be ommitted it will be computed numerically.)")
   end
@@ -234,15 +234,15 @@ function dualnumber.newfunc(name,func,deriv)
 end
 
 
-dualnumber.newfunc("ln", math.log, function(x) return 1/x end)
-dualnumber.newfunc("logistic", function(x) return 1/(math.exp(-x)+1) end, function(x) local temp=math.exp(x) return temp/(1+temp)^2 end)
-dualnumber.newfunc("relu", function(x) return math.max(0,x) end, function(x) return math.min(math.max(0,x),1) end)
-dualnumber.newfunc("gaussian", function(x) return math.exp(-x*x)/math.sqrt(math.pi*2) end, function(x) return -math.sqrt(2/math.pi)*x*math.exp(-x*x) end)
-dualnumber.newfunc("Id", function(x) return x end, function(x) return 1 end)
-dualnumber.newfunc("softplus", function(x) return math.log(1+math.exp(x)) end, dualnumber.functions.logistic)
-dualnumber.newfunc("simplified_logistic",function(x) return math.min(math.max(0,x+2),4)/4 end, function(x) if x<=-2 or x>=2 then return 0 else return .25 end end)
-dualnumber.newfunc("Step", function(x) if x<0 then return 0 else return 1 end end, function(x) return 0 end)
-dualnumber.newfunc("Square", function(x) return x*x end, function(x) return 2*x end)
+dualnumber.new_func("ln", math.log, function(x) return 1/x end)
+dualnumber.new_func("logistic", function(x) return 1/(math.exp(-x)+1) end, function(x) local temp=math.exp(x) return temp/(1+temp)^2 end)
+dualnumber.new_func("relu", function(x) return math.max(0,x) end, function(x) return math.min(math.max(0,x),1) end)
+dualnumber.new_func("gaussian", function(x) return math.exp(-x*x)/math.sqrt(math.pi*2) end, function(x) return -math.sqrt(2/math.pi)*x*math.exp(-x*x) end)
+dualnumber.new_func("Id", function(x) return x end, function(x) return 1 end)
+dualnumber.new_func("softplus", function(x) return math.log(1+math.exp(x)) end, dualnumber.functions.logistic)
+dualnumber.new_func("simplified_logistic",function(x) return math.min(math.max(0,x+2),4)/4 end, function(x) if x<=-2 or x>=2 then return 0 else return .25 end end)
+dualnumber.new_func("Step", function(x) if x<0 then return 0 else return 1 end end, function(x) return 0 end)
+dualnumber.new_func("Square", function(x) return x*x end, function(x) return 2*x end)
 
 
 return dualnumber
