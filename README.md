@@ -1,3 +1,3 @@
 # README #
 
-An Arbitrary Graph Package for Genetic Algorithms
+autodiff with dual numbers using lua
